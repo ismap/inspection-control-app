@@ -19,30 +19,33 @@ const InspectionScreen = ({ route, navigation }) => {
   const [ access_data, set_access_data ] = useState([]);
   const [ id_inspection, set_id_inspection ] = useState(null);
 
+  const [ inspection_images, set_inspection_images ] = useState([{inspection_truck_fueltank_image: undefined},{inspection_truck_defense_image: undefined}])
+
   const [ inspection_truck_fueltank, set_inspection_truck_fueltank ] = useState('');
-  const [ inspection_truck_fueltank_image, set_inspection_truck_fueltank_image ] = useState('file:///storage/emulated/0/Download/images.jpeg');
+  const [ inspection_truck_fueltank_image, set_inspection_truck_fueltank_image ] = useState();
   const [ inspection_truck_defense, set_inspection_truck_defense ] = useState('');
-  const [ inspection_truck_defense_image, set_inspection_truck_defense_image ] = useState('file:///storage/emulated/0/Download/images.jpeg');
+  const [ inspection_truck_defense_image, set_inspection_truck_defense_image ] = useState();
   const [ inspection_truck_engine, set_inspection_truck_engine ] = useState('');
-  const [ inspection_truck_engine_image, set_inspection_truck_engine_image ] = useState('file:///storage/emulated/0/Download/images.jpeg');
+  const [ inspection_truck_engine_image, set_inspection_truck_engine_image ] = useState();
   const [ inspection_truck_tires, set_inspection_truck_tires ] = useState('');
-  const [ inspection_truck_tires_image, set_inspection_truck_tires_image ] = useState('file:///storage/emulated/0/Download/images.jpeg');
+  const [ inspection_truck_tires_image, set_inspection_truck_tires_image ] = useState();
 
   const [ inspection_box_leftwall, set_inspection_box_leftwall ] = useState('');
-  const [ inspection_box_leftwall_image, set_inspection_box_leftwall_image ] = useState('file:///storage/emulated/0/Download/images.jpeg');
+  const [ inspection_box_leftwall_image, set_inspection_box_leftwall_image ] = useState();
   const [ inspection_box_backdoors, set_inspection_box_backdoors ] = useState('');
-  const [ inspection_box_backdoors_image, set_inspection_box_backdoors_image ] = useState('file:///storage/emulated/0/Download/images.jpeg');
+  const [ inspection_box_backdoors_image, set_inspection_box_backdoors_image ] = useState();
   const [ inspection_box_seal, set_inspection_box_seal ] = useState('');
-  const [ inspection_box_seal_image, set_inspection_box_seal_image ] = useState('file:///storage/emulated/0/Download/images.jpeg');
+  const [ inspection_box_seal_image, set_inspection_box_seal_image ] = useState();
   const [ inspection_box_pollutants, set_inspection_box_pollutants ] = useState('');
+  const [ inspection_box_pollutants_image, set_inspection_box_pollutants_image ] = useState();
   const [ inspection_box_rightwall, set_inspection_box_rightwall ] = useState('');
-  const [ inspection_box_rightwall_image, set_inspection_box_rightwall_image ] = useState('file:///storage/emulated/0/Download/images.jpeg');
+  const [ inspection_box_rightwall_image, set_inspection_box_rightwall_image ] = useState();
   const [ inspection_box_tires, set_inspection_box_tires ] = useState('');
-  const [ inspection_box_tires_image, set_inspection_box_tires_image ] = useState('file:///storage/emulated/0/Download/images.jpeg');
+  const [ inspection_box_tires_image, set_inspection_box_tires_image ] = useState();
   const [ inspection_box_under, set_inspection_box_under ] = useState('');
-  const [ inspection_box_under_image, set_inspection_box_under_image ] = useState('file:///storage/emulated/0/Download/images.jpeg');
+  const [ inspection_box_under_image, set_inspection_box_under_image ] = useState();
   const [ inspection_box_coolingunit, set_inspection_box_coolingunit ] = useState('');
-  const [ inspection_box_coolingunit_image, set_inspection_box_coolingunit_image ] = useState('file:///storage/emulated/0/Download/images.jpeg');
+  const [ inspection_box_coolingunit_image, set_inspection_box_coolingunit_image ] = useState();
 
   const [ inspection_box_load, set_inspection_box_load ] = useState('');
   const [ inspection_box_backdoors_inside, set_inspection_box_backdoors_inside ] = useState('');
@@ -181,6 +184,10 @@ const InspectionScreen = ({ route, navigation }) => {
   const take_image_box_seal = async () => {
     let result = await ImagePicker.launchCameraAsync({quality: 0.2});
     set_inspection_box_seal_image(result.uri)
+  };
+  const take_image_box_pollutants = async () => {
+    let result = await ImagePicker.launchCameraAsync({quality: 0.2});
+    set_inspection_box_pollutants_image(result.uri)
   };
   const take_image_box_rightwall = async () => {
     let result = await ImagePicker.launchCameraAsync({quality: 0.2});
@@ -325,9 +332,15 @@ const InspectionScreen = ({ route, navigation }) => {
 
           <View style={styles.container_pressable}>
 
-            <Pressable style={styles.pressable_disabled} onPress={take_image_box_seal}>
-              <Image style={{ width: 44, height: 44 }} source={require('../img/photo.png')} />
-            </Pressable>
+            {inspection_box_seal_image === undefined
+              ?
+                <Pressable style={styles.pressable_disabled} onPress={take_image_box_seal}>
+                  <Image style={{ width: 44, height: 44 }} source={require('../img/photo.png')} />
+                </Pressable>
+              :
+                null
+            }
+
 
           </View>
 
@@ -461,9 +474,15 @@ const InspectionScreen = ({ route, navigation }) => {
                   <Image style={{ width: 44, height: 44 }} source={require('../img/cancel.png')} />
                 </Pressable>
 
-                <Pressable style={styles.pressable_disabled} onPress={take_image_truck_fueltank}>
-                  <Image style={{ width: 44, height: 44 }} source={require('../img/photo.png')} />
-                </Pressable>
+                {inspection_truck_fueltank_image === undefined
+                  ?
+                    <Pressable style={styles.pressable_disabled} onPress={take_image_truck_fueltank}>
+                      <Image style={{ width: 44, height: 44 }} source={require('../img/photo.png')} />
+                    </Pressable>
+                  :
+                    null
+                }
+
 
               </View>
 
@@ -485,9 +504,15 @@ const InspectionScreen = ({ route, navigation }) => {
                   <Image style={{ width: 44, height: 44 }} source={require('../img/cancel.png')} />
                 </Pressable>
 
-                <Pressable style={styles.pressable_disabled} onPress={take_image_truck_defense}>
-                  <Image style={{ width: 44, height: 44 }} source={require('../img/photo.png')} />
-                </Pressable>
+                {inspection_truck_defense_image === undefined
+                  ?
+                    <Pressable style={styles.pressable_disabled} onPress={take_image_truck_defense}>
+                      <Image style={{ width: 44, height: 44 }} source={require('../img/photo.png')} />
+                    </Pressable>
+                  :
+                    null
+                }
+
 
               </View>
 
@@ -509,9 +534,15 @@ const InspectionScreen = ({ route, navigation }) => {
                   <Image style={{ width: 44, height: 44 }} source={require('../img/cancel.png')} />
                 </Pressable>
 
-                <Pressable style={styles.pressable_disabled} onPress={take_image_truck_engine}>
-                  <Image style={{ width: 44, height: 44 }} source={require('../img/photo.png')} />
-                </Pressable>
+                {inspection_truck_engine_image === undefined
+                  ?
+                    <Pressable style={styles.pressable_disabled} onPress={take_image_truck_engine}>
+                      <Image style={{ width: 44, height: 44 }} source={require('../img/photo.png')} />
+                    </Pressable>
+                  :
+                    null
+                }
+
 
               </View>
 
@@ -533,9 +564,15 @@ const InspectionScreen = ({ route, navigation }) => {
                   <Image style={{ width: 44, height: 44 }} source={require('../img/cancel.png')} />
                 </Pressable>
 
-                <Pressable style={styles.pressable_disabled} onPress={take_image_truck_tires}>
-                  <Image style={{ width: 44, height: 44 }} source={require('../img/photo.png')} />
-                </Pressable>
+                {inspection_truck_tires_image === undefined
+                  ?
+                    <Pressable style={styles.pressable_disabled} onPress={take_image_truck_tires}>
+                      <Image style={{ width: 44, height: 44 }} source={require('../img/photo.png')} />
+                    </Pressable>
+                  :
+                    null
+                }
+
 
               </View>
 
@@ -557,9 +594,15 @@ const InspectionScreen = ({ route, navigation }) => {
                   <Image style={{ width: 44, height: 44 }} source={require('../img/cancel.png')} />
                 </Pressable>
 
-                <Pressable style={styles.pressable_disabled} onPress={take_image_box_leftwall}>
-                  <Image style={{ width: 44, height: 44 }} source={require('../img/photo.png')} />
-                </Pressable>
+                {inspection_box_leftwall_image === undefined
+                  ?
+                    <Pressable style={styles.pressable_disabled} onPress={take_image_box_leftwall}>
+                      <Image style={{ width: 44, height: 44 }} source={require('../img/photo.png')} />
+                    </Pressable>
+                  :
+                    null
+                }
+
 
               </View>
 
@@ -581,9 +624,15 @@ const InspectionScreen = ({ route, navigation }) => {
                   <Image style={{ width: 44, height: 44 }} source={require('../img/cancel.png')} />
                 </Pressable>
 
-                <Pressable style={styles.pressable_disabled} onPress={take_image_box_backdoors}>
-                  <Image style={{ width: 44, height: 44 }} source={require('../img/photo.png')} />
-                </Pressable>
+                {inspection_box_backdoors_image === undefined
+                  ?
+                    <Pressable style={styles.pressable_disabled} onPress={take_image_box_backdoors}>
+                      <Image style={{ width: 44, height: 44 }} source={require('../img/photo.png')} />
+                    </Pressable>
+                  :
+                    null
+                }
+
 
               </View>
 
@@ -627,6 +676,21 @@ const InspectionScreen = ({ route, navigation }) => {
                   <Image style={{ width: 44, height: 44 }} source={require('./img/cancel.png')} />
                 </Pressable>
 
+                {inspection_box_pollutants === 'Con anomalías'
+                  ?
+                    inspection_box_pollutants_image === undefined
+                      ?
+                        <Pressable style={styles.pressable_disabled} onPress={take_image_box_pollutants}>
+                          <Image style={{ width: 44, height: 44 }} source={require('../img/photo.png')} />
+                        </Pressable>
+                      :
+                        null
+                  :
+                    null
+                }
+
+
+
               </View>
 
             </View>
@@ -647,9 +711,15 @@ const InspectionScreen = ({ route, navigation }) => {
                   <Image style={{ width: 44, height: 44 }} source={require('./img/cancel.png')} />
                 </Pressable>
 
-                <Pressable style={styles.pressable_disabled} onPress={take_image_box_rightwall}>
-                  <Image style={{ width: 44, height: 44 }} source={require('./img/photo.png')} />
-                </Pressable>
+                {inspection_box_rightwall_image === undefined
+                  ?
+                    <Pressable style={styles.pressable_disabled} onPress={take_image_box_rightwall}>
+                      <Image style={{ width: 44, height: 44 }} source={require('./img/photo.png')} />
+                    </Pressable>
+                  :
+                    null
+                }
+
 
               </View>
 
@@ -671,9 +741,15 @@ const InspectionScreen = ({ route, navigation }) => {
                   <Image style={{ width: 44, height: 44 }} source={require('./img/cancel.png')} />
                 </Pressable>
 
-                <Pressable style={styles.pressable_disabled} onPress={take_image_box_tires}>
-                  <Image style={{ width: 44, height: 44 }} source={require('./img/photo.png')} />
-                </Pressable>
+                {inspection_box_tires_image === undefined
+                  ?
+                    <Pressable style={styles.pressable_disabled} onPress={take_image_box_tires}>
+                      <Image style={{ width: 44, height: 44 }} source={require('./img/photo.png')} />
+                    </Pressable>
+                  :
+                    null
+                }
+
 
               </View>
 
@@ -695,9 +771,15 @@ const InspectionScreen = ({ route, navigation }) => {
                   <Image style={{ width: 44, height: 44 }} source={require('./img/cancel.png')} />
                 </Pressable>
 
-                <Pressable style={styles.pressable_disabled} onPress={take_image_box_under}>
-                  <Image style={{ width: 44, height: 44 }} source={require('./img/photo.png')} />
-                </Pressable>
+                {inspection_box_under_image === undefined
+                  ?
+                    <Pressable style={styles.pressable_disabled} onPress={take_image_box_under}>
+                      <Image style={{ width: 44, height: 44 }} source={require('./img/photo.png')} />
+                    </Pressable>
+                  :
+                    null
+                }
+
 
               </View>
 
@@ -719,9 +801,15 @@ const InspectionScreen = ({ route, navigation }) => {
                   <Image style={{ width: 44, height: 44 }} source={require('./img/cancel.png')} />
                 </Pressable>
 
-                <Pressable style={styles.pressable_disabled} onPress={take_image_box_coolingunit}>
-                  <Image style={{ width: 44, height: 44 }} source={require('./img/photo.png')} />
-                </Pressable>
+                {inspection_box_coolingunit_image === undefined
+                  ?
+                    <Pressable style={styles.pressable_disabled} onPress={take_image_box_coolingunit}>
+                      <Image style={{ width: 44, height: 44 }} source={require('./img/photo.png')} />
+                    </Pressable>
+                  :
+                    null
+                }
+
 
               </View>
 
@@ -733,7 +821,11 @@ const InspectionScreen = ({ route, navigation }) => {
                 ?
                   <Button mode='contained' uppercase={false} loading={true}>Cargando...</Button>
                 :
-                  <Button mode='contained' onPress={submit} >Enviar</Button>
+                  {inspection_truck_defense_image ,inspection_box_coolingunit_image} === undefined
+                    ?
+                      <Button mode='contained' onPress={submit} disabled={true} >Enviar</Button>
+                    :
+                      <Button mode='contained' onPress={submit} >Enviar</Button>
               }
 
             </View>
