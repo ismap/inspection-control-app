@@ -19,6 +19,7 @@ const InspectionScreen = ({ route, navigation }) => {
   const [ access_data, set_access_data ] = useState([]);
   const [ id_inspection, set_id_inspection ] = useState(null);
 
+
   const [ inspection_company, set_inspection_company ] = useState('Transportes Refrigerados Rivas');
 
   const [ inspection_truck_fueltank, set_inspection_truck_fueltank ] = useState('');
@@ -435,7 +436,14 @@ const InspectionScreen = ({ route, navigation }) => {
                   <Image style={{ width: 44, height: 44 }} source={require('../img/photo.png')} />
                 </Pressable>
               :
-                null
+                <Pressable style={{marginRight: 10, padding: 15,}} onPress={take_image_box_seal}>
+                  <Image
+                    style={{width: 44, height: 44, borderRadius: 100}}
+                    source={{
+                      uri: inspection_box_seal_image,
+                    }}
+                  />
+                </Pressable>
             }
 
 
@@ -469,7 +477,14 @@ const InspectionScreen = ({ route, navigation }) => {
                     <Image style={{ width: 44, height: 44 }} source={require('./img/photo.png')} />
                   </Pressable>
                 :
-                  null
+                  <Pressable style={{marginRight: 10, padding: 15,}} onPress={take_image_box_backdoors_inside}>
+                    <Image
+                      style={{width: 44, height: 44, borderRadius: 100}}
+                      source={{
+                        uri: inspection_box_backdoors_inside_image,
+                      }}
+                    />
+                  </Pressable>
               }
 
 
@@ -520,7 +535,14 @@ const InspectionScreen = ({ route, navigation }) => {
                     <Image style={{ width: 44, height: 44 }} source={require('../img/photo.png')} />
                   </Pressable>
                 :
-                  null
+                  <Pressable style={{marginRight: 10, padding: 15,}} onPress={take_image_box_walls_inside}>
+                    <Image
+                      style={{width: 44, height: 44, borderRadius: 100}}
+                      source={{
+                        uri: inspection_box_walls_inside_image,
+                      }}
+                    />
+                  </Pressable>
               }
 
 
@@ -589,7 +611,15 @@ const InspectionScreen = ({ route, navigation }) => {
                       <Image style={{ width: 44, height: 44 }} source={require('../img/photo.png')} />
                     </Pressable>
                   :
-                    null
+                    <Pressable style={{marginRight: 10, padding: 15,}} onPress={take_image_truck_fueltank}>
+                      <Image
+                        style={{width: 44, height: 44, borderRadius: 100}}
+                        source={{
+                          uri: inspection_truck_fueltank_image,
+                        }}
+                      />
+                    </Pressable>
+
                 }
 
 
@@ -619,7 +649,14 @@ const InspectionScreen = ({ route, navigation }) => {
                       <Image style={{ width: 44, height: 44 }} source={require('../img/photo.png')} />
                     </Pressable>
                   :
-                    null
+                   <Pressable style={{marginRight: 10, padding: 15,}} onPress={take_image_truck_defense}>
+                      <Image
+                        style={{width: 44, height: 44, borderRadius: 100}}
+                        source={{
+                          uri: inspection_truck_defense_image,
+                        }}
+                      />
+                    </Pressable>
                 }
 
 
@@ -649,7 +686,14 @@ const InspectionScreen = ({ route, navigation }) => {
                       <Image style={{ width: 44, height: 44 }} source={require('../img/photo.png')} />
                     </Pressable>
                   :
-                    null
+                    <Pressable style={{marginRight: 10, padding: 15,}} onPress={take_image_truck_engine}>
+                      <Image
+                        style={{width: 44, height: 44, borderRadius: 100}}
+                        source={{
+                          uri: inspection_truck_engine_image,
+                        }}
+                      />
+                    </Pressable>
                 }
 
 
@@ -679,7 +723,14 @@ const InspectionScreen = ({ route, navigation }) => {
                       <Image style={{ width: 44, height: 44 }} source={require('../img/photo.png')} />
                     </Pressable>
                   :
-                    null
+                    <Pressable style={{marginRight: 10, padding: 15,}} onPress={take_image_truck_tires}>
+                      <Image
+                        style={{width: 44, height: 44, borderRadius: 100}}
+                        source={{
+                          uri: inspection_truck_tires_image,
+                        }}
+                      />
+                    </Pressable>
                 }
 
 
@@ -709,7 +760,14 @@ const InspectionScreen = ({ route, navigation }) => {
                       <Image style={{ width: 44, height: 44 }} source={require('../img/photo.png')} />
                     </Pressable>
                   :
-                    null
+                    <Pressable style={{marginRight: 10, padding: 15,}} onPress={take_image_box_leftwall}>
+                      <Image
+                        style={{width: 44, height: 44, borderRadius: 100}}
+                        source={{
+                          uri: inspection_box_leftwall_image,
+                        }}
+                      />
+                    </Pressable>
                 }
 
 
@@ -739,7 +797,14 @@ const InspectionScreen = ({ route, navigation }) => {
                       <Image style={{ width: 44, height: 44 }} source={require('../img/photo.png')} />
                     </Pressable>
                   :
-                    null
+                    <Pressable style={{marginRight: 10, padding: 15,}} onPress={take_image_box_backdoors}>
+                      <Image
+                        style={{width: 44, height: 44, borderRadius: 100}}
+                        source={{
+                          uri: inspection_box_backdoors_image,
+                        }}
+                      />
+                    </Pressable>
                 }
 
 
@@ -793,7 +858,14 @@ const InspectionScreen = ({ route, navigation }) => {
                           <Image style={{ width: 44, height: 44 }} source={require('../img/photo.png')} />
                         </Pressable>
                       :
-                        null
+                        <Pressable style={{marginRight: 10, padding: 15,}} onPress={take_image_box_pollutants}>
+                          <Image
+                            style={{width: 44, height: 44, borderRadius: 100}}
+                            source={{
+                              uri: inspection_box_pollutants_image,
+                            }}
+                          />
+                        </Pressable>
                   :
                     null
                 }
@@ -826,7 +898,14 @@ const InspectionScreen = ({ route, navigation }) => {
                       <Image style={{ width: 44, height: 44 }} source={require('./img/photo.png')} />
                     </Pressable>
                   :
-                    null
+                    <Pressable style={{marginRight: 10, padding: 15,}} onPress={take_image_box_rightwall}>
+                      <Image
+                        style={{width: 44, height: 44, borderRadius: 100}}
+                        source={{
+                          uri: inspection_box_rightwall_image,
+                        }}
+                      />
+                    </Pressable>
                 }
 
 
@@ -856,7 +935,14 @@ const InspectionScreen = ({ route, navigation }) => {
                       <Image style={{ width: 44, height: 44 }} source={require('./img/photo.png')} />
                     </Pressable>
                   :
-                    null
+                    <Pressable style={{marginRight: 10, padding: 15,}} onPress={take_image_box_tires}>
+                      <Image
+                        style={{width: 44, height: 44, borderRadius: 100}}
+                        source={{
+                          uri: inspection_box_tires_image,
+                        }}
+                      />
+                    </Pressable>
                 }
 
 
@@ -886,7 +972,14 @@ const InspectionScreen = ({ route, navigation }) => {
                       <Image style={{ width: 44, height: 44 }} source={require('./img/photo.png')} />
                     </Pressable>
                   :
-                    null
+                    <Pressable style={{marginRight: 10, padding: 15,}} onPress={take_image_box_under}>
+                      <Image
+                        style={{width: 44, height: 44, borderRadius: 100}}
+                        source={{
+                          uri: inspection_box_under_image,
+                        }}
+                      />
+                    </Pressable>
                 }
 
 
@@ -916,7 +1009,14 @@ const InspectionScreen = ({ route, navigation }) => {
                       <Image style={{ width: 44, height: 44 }} source={require('./img/photo.png')} />
                     </Pressable>
                   :
-                    null
+                    <Pressable style={{marginRight: 10, padding: 15,}} onPress={take_image_box_coolingunit}>
+                      <Image
+                        style={{width: 44, height: 44, borderRadius: 100}}
+                        source={{
+                          uri: inspection_box_coolingunit_image,
+                        }}
+                      />
+                    </Pressable>
                 }
 
 
@@ -970,7 +1070,14 @@ const InspectionScreen = ({ route, navigation }) => {
                       <Image style={{ width: 44, height: 44 }} source={require('../img/photo.png')} />
                     </Pressable>
                   :
-                    null
+                    <Pressable style={{marginRight: 10, padding: 15,}} onPress={take_image_box_leftwall}>
+                      <Image
+                        style={{width: 44, height: 44, borderRadius: 100}}
+                        source={{
+                          uri: inspection_box_leftwall_image,
+                        }}
+                      />
+                    </Pressable>
                 }
 
 
@@ -1000,7 +1107,14 @@ const InspectionScreen = ({ route, navigation }) => {
                       <Image style={{ width: 44, height: 44 }} source={require('../img/photo.png')} />
                     </Pressable>
                   :
-                    null
+                    <Pressable style={{marginRight: 10, padding: 15,}} onPress={take_image_box_backdoors}>
+                      <Image
+                        style={{width: 44, height: 44, borderRadius: 100}}
+                        source={{
+                          uri: inspection_box_backdoors_image,
+                        }}
+                      />
+                    </Pressable>
                 }
 
 
@@ -1053,7 +1167,14 @@ const InspectionScreen = ({ route, navigation }) => {
                           <Image style={{ width: 44, height: 44 }} source={require('../img/photo.png')} />
                         </Pressable>
                       :
-                        null
+                        <Pressable style={{marginRight: 10, padding: 15,}} onPress={take_image_box_pollutants}>
+                          <Image
+                            style={{width: 44, height: 44, borderRadius: 100}}
+                            source={{
+                              uri: inspection_box_pollutants_image,
+                            }}
+                          />
+                        </Pressable>
                   :
                     null
                 }
@@ -1084,7 +1205,14 @@ const InspectionScreen = ({ route, navigation }) => {
                       <Image style={{ width: 44, height: 44 }} source={require('../img/photo.png')} />
                     </Pressable>
                   :
-                    null
+                    <Pressable style={{marginRight: 10, padding: 15,}} onPress={take_image_box_rightwall}>
+                      <Image
+                        style={{width: 44, height: 44, borderRadius: 100}}
+                        source={{
+                          uri: inspection_box_rightwall_image,
+                        }}
+                      />
+                    </Pressable>
                 }
 
 
@@ -1114,7 +1242,14 @@ const InspectionScreen = ({ route, navigation }) => {
                       <Image style={{ width: 44, height: 44 }} source={require('../img/photo.png')} />
                     </Pressable>
                   :
-                    null
+                    <Pressable style={{marginRight: 10, padding: 15,}} onPress={take_image_box_tires}>
+                      <Image
+                        style={{width: 44, height: 44, borderRadius: 100}}
+                        source={{
+                          uri: inspection_box_tires_image,
+                        }}
+                      />
+                    </Pressable>
                 }
 
 
@@ -1144,7 +1279,14 @@ const InspectionScreen = ({ route, navigation }) => {
                       <Image style={{ width: 44, height: 44 }} source={require('./img/photo.png')} />
                     </Pressable>
                   :
-                    null
+                    <Pressable style={{marginRight: 10, padding: 15,}} onPress={take_image_box_coolingunit}>
+                      <Image
+                        style={{width: 44, height: 44, borderRadius: 100}}
+                        source={{
+                          uri: inspection_box_coolingunit_image,
+                        }}
+                      />
+                    </Pressable>
                 }
 
 
