@@ -56,6 +56,9 @@ const InspectionScreen = ({ route, navigation }) => {
   const [ inspection_box_walls_inside_image, set_inspection_box_walls_inside_image ] = useState(null);
   const [ inspection_box_floor, set_inspection_box_floor ] = useState('');
 
+  const [ inspection_document_cp, set_inspection_document_cp ] = useState('');
+  const [ inspection_document_cp_number, set_inspection_document_cp_number] = useState('');
+ 
 
   const pressed_accept_inspection_truck_fueltank = () => {
     set_inspection_truck_fueltank('Sin anomalías');
@@ -155,6 +158,13 @@ const InspectionScreen = ({ route, navigation }) => {
   };
   const pressed_cancel_inspection_box_floor = () => {
     set_inspection_box_floor('Con anomalías');
+  };
+
+  const pressed_accept_inspection_document_cp = () => {
+    set_inspection_document_cp('Sí');
+  };
+  const pressed_cancel_inspection_document_cp = () => {
+    set_inspection_document_cp('No');
   };
 
 
@@ -272,10 +282,14 @@ const InspectionScreen = ({ route, navigation }) => {
   incomingdata.append('inspection_box_tires_image', {uri: inspection_box_tires_image, type:'image/jpg', name:'inspection_box_tires_image.jpg'});
 
   incomingdata.append('inspection_box_pollutants', inspection_box_pollutants);
+
   if (inspection_box_pollutants === 'Con anomalías')
   {
     incomingdata.append('inspection_box_pollutants_image', {uri: inspection_box_pollutants_image, type: "image/jpg", name:'inspection_box_pollutants_image.jpg'})
   }
+
+  incomingdata.append('inspection_document_cp', inspection_document_cp);
+  incomingdata.append('inspection_document_cp_number', inspection_document_cp_number);
 
   //put_inspection.append('inspection_document_departamentmotors', 'Sí');
   //put_inspection.append('inspection_document_invoice', 'Sí');
@@ -309,6 +323,9 @@ const InspectionScreen = ({ route, navigation }) => {
   {
     outbounddata.append('inspection_box_pollutants_image', {uri: inspection_box_pollutants_image, type: "image/jpg", name:'inspection_box_pollutants_image.jpg'})
   }
+
+  outbounddata.append('inspection_document_cp', inspection_document_cp);
+  outbounddata.append('inspection_document_cp_number', inspection_document_cp_number);
 
   outbounddata.append('inspection_box_load', inspection_box_load);
   if (inspection_box_load === 'Con carga')
@@ -1026,6 +1043,35 @@ const InspectionScreen = ({ route, navigation }) => {
 
             <View>
 
+              <View>
+                <Text>13. Examine los documentos y verifique que cuente con <Text style={styles.highlight_text}>carta porte</Text>.</Text>
+              </View>
+
+              <View style={styles.container_pressable}>
+
+                <Pressable style={inspection_document_cp === 'Sí' ? styles.pressable_selected : styles.pressable_disabled } onPress={pressed_accept_inspection_document_cp}>
+                  <Image style={{ width: 44, height: 44 }} source={require('./img/checked.png')} />
+                </Pressable>
+
+                <Pressable style={inspection_document_cp === 'No' ? styles.pressable_selected : styles.pressable_disabled } onPress={pressed_cancel_inspection_document_cp}>
+                  <Image style={{ width: 44, height: 44 }} source={require('./img/cancel.png')} />
+                </Pressable>
+
+              </View>
+
+              {inspection_document_cp === 'Sí'
+                  ?
+                    <View style={styles.container_textinput}>
+                      <TextInput label='Número de Carta Porte' value={inspection_document_cp_number} onChangeText={inspection_document_cp_number => set_inspection_document_cp_number(inspection_document_cp_number)} />
+                    </View>
+                  :
+                    null
+                }
+
+            </View>
+
+            <View>
+
               {api_load
                 ?
                   <Button mode='contained' uppercase={false} loading={true}>Cargando...</Button>
@@ -1291,6 +1337,35 @@ const InspectionScreen = ({ route, navigation }) => {
 
 
               </View>
+
+            </View>
+
+            <View>
+
+              <View>
+                <Text>8. Examine los documentos y verifique que cuente con <Text style={styles.highlight_text}>carta porte</Text>.</Text>
+              </View>
+
+              <View style={styles.container_pressable}>
+
+                <Pressable style={inspection_document_cp === 'Sí' ? styles.pressable_selected : styles.pressable_disabled } onPress={pressed_accept_inspection_document_cp}>
+                  <Image style={{ width: 44, height: 44 }} source={require('./img/checked.png')} />
+                </Pressable>
+
+                <Pressable style={inspection_document_cp === 'No' ? styles.pressable_selected : styles.pressable_disabled } onPress={pressed_cancel_inspection_document_cp}>
+                  <Image style={{ width: 44, height: 44 }} source={require('./img/cancel.png')} />
+                </Pressable>
+
+              </View>
+
+              {inspection_document_cp === 'Sí'
+                  ?
+                    <View style={styles.container_textinput}>
+                      <TextInput label='Número de Carta Porte' value={inspection_document_cp_number} onChangeText={inspection_document_cp_number => set_inspection_document_cp_number(inspection_document_cp_number)} />
+                    </View>
+                  :
+                    null
+                }
 
             </View>
 
